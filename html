@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ИП Томилов П.И. | Строительство и логистика</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ========== СТРОИТЕЛЬНЫЙ ФОН ========== */
+        body {
+    /* Картинка: строительная площадка с краном и лесами (высокое разрешение, free for commercial use) */
+    background-image: url('https://img.freepik.com/fotos-premium/baustelle-mit-kraenen-und-gebaeude-im-baugenerative-ai_841229-4368.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    line-height: 1.5;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    position: relative;
+}
+
+        /* Полупрозрачный оверлей, чтобы текст читался легко */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(2px);
+            z-index: 0;
+        }
+
+        /* основной контейнер — светлый, с лёгкой полупрозрачностью и стеклянным эффектом */
+        .document-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(1px);
+            border-radius: 40px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 215, 150, 0.2);
+            overflow: hidden;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* декоративная полоса "арматура" */
+        .accent-bar {
+            height: 6px;
+            background: repeating-linear-gradient(90deg, #c07d3a, #c07d3a 20px, #e5a443 20px, #e5a443 40px);
+        }
+
+        .content {
+            padding: 2rem 2rem 2rem 2rem;
+        }
+
+        /* шапка */
+        .header {
+            border-bottom: 2px solid #e9edf2;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .title-section h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1f4d2e, #b4652a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+        .title-section p {
+            color: #4a5f6e;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .badge-date {
+            background: rgba(0,0,0,0.05);
+            backdrop-filter: blur(2px);
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1e4663;
+            border: 1px solid #e2c294;
+        }
+        .official-stamp {
+            text-align: right;
+            font-style: normal;
+            background: #fbf7ef;
+            padding: 0.6rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            border-left: 4px solid #c07d3a;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        /* карточки с "кирпичным" акцентом */
+        .info-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #ece3d8;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s;
+        }
+        .info-card:hover {
+            border-color: #dabb84;
+            box-shadow: 0 15px 28px -12px rgba(0, 0, 0, 0.15);
+        }
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: #2b482f;
+            border-left: 5px solid #c6872e;
+            padding-left: 1rem;
+        }
+        .card-title i {
+            color: #b9671a;
+            font-size: 1.6rem;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .okved-block {
+            background: #fefaf4;
+            border-radius: 20px;
+            padding: 1.2rem;
+            border-left: 4px solid #e0a348;
+        }
+        .okved-main {
+            border-left-color: #2b7a4b;
+            background: #f2f9f0;
+        }
+        .badge-okved {
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9b6a2c;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .code {
+            font-family: 'SF Mono', monospace;
+            font-weight: 700;
+            color: #1f5e3f;
+            background: #e0eede;
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+        }
+        .activity-list {
+            list-style: none;
+            margin-top: 0.8rem;
+        }
+        .activity-list li {
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .activity-list li i {
+            color: #c07d3a;
+            width: 1.4rem;
+            font-size: 0.9rem;
+        }
+        .extra-note {
+            margin-top: 1rem;
+            background: #fffbee;
+            padding: 0.8rem 1rem;
+            border-radius: 18px;
+            border: 1px solid #f5e2bf;
+            font-size: 0.9rem;
+        }
+
+        /* услуги */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 0.8rem;
+        }
+        .service-item {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.2rem;
+            border: 1px solid #efeadf;
+            transition: all 0.2s;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.02);
+        }
+        .service-item:hover {
+            transform: translateY(-4px);
+            border-color: #dcb570;
+            box-shadow: 0 20px 28px -12px rgba(0, 0, 0, 0.12);
+        }
+        .service-icon {
+            font-size: 2rem;
+            color: #c57725;
+            margin-bottom: 0.8rem;
+        }
+        .service-item h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .transport-highlight {
+            background: #fff3e2;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 1rem;
+            border: 1px solid #e9cf9b;
+        }
+        .footer-note {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2d5c2;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7c6852;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        @media (max-width: 760px) {
+            .content {
+                padding: 1.5rem;
+            }
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .official-stamp {
+                text-align: left;
+            }
+            .card-title {
+                font-size: 1.3rem;
+            }
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            body::before {
+                display: none;
+            }
+            .service-item {
+                break-inside: avoid;
+            }
+        }
+        .text-highlight {
+            font-weight: 700;
+            color: #b65f1a;
+        }
+        .signature {
+            margin-top: 1rem;
+            font-style: italic;
+            border-left: 4px solid #f0b561;
+            padding-left: 1rem;
+            background: #fff7ef;
+            border-radius: 0 20px 20px 0;
+        }
+        /* элемент "строительная каска" декоративно */
+        .construction-icon {
+            background: rgba(0,0,0,0.03);
+            border-radius: 100px;
+            padding: 0 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="document-container">
+    <div class="accent-bar"></div>
+    <div class="content">
+        <div class="header">
+            <div class="title-section">
+                <h1><i class="fas fa-hard-hat" style="color: #c57725; margin-right: 8px;"></i> ИП Томилов Павел Иванович</h1>
+            </div>
+            <div class="official-stamp">
+        </div>
+
+        <!-- Официальное сообщение -->
+        <div class="info-card">
+            <div class="card-title">
+                <i class="fas fa-trowel"></i>
+                <span>Уважаемые партнёры и заказчики!</span>
+            </div>
+            <p>Индивидуальный предприниматель <strong>Томилов Павел Иванович</strong> осуществляет свою деятельность с <strong class="text-highlight">15 июля 2022 года</strong> в области строительства и комплексного обеспечения объектов.</p>
+        </div>
+
+        <!-- ОКВЭД основной + доп -->
+        <div class="grid-2col" style="margin-bottom: 1.5rem;">
+            <div class="okved-block okved-main">
+                <span class="badge-okved"><i class="fas fa-building"></i> Основной вид деятельности (ОКВЭД)</span>
+                <div><span class="code">41.20</span> — Строительство жилых и нежилых зданий.</div>
+                <div style="margin-top: 12px; font-size: 0.9rem; color: #2c5a3b;"><i class="fas fa-helmet-safety"></i> Полный цикл: от проекта до ввода в эксплуатацию</div>
+            </div>
+            <div class="okved-block">
+                <span class="badge-okved"><i class="fas fa-chart-line"></i> Дополнительные виды деятельности</span>
+                <ul class="activity-list">
+                    <li><i class="fas fa-truck"></i> <strong>46.73</strong> — Оптовая торговля лесоматериалами, строительными материалами и сантехническим оборудованием</li>
+                    <li><i class="fas fa-tools"></i> <strong>Строительно-монтажные работы</strong> (устройство фундаментов, кладка, инженерия, отделка)</li>
+                    <li><i class="fas fa-tools"></i> <strong>Расчистка территории</strong> </li>
+                    
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Организация работ: бригады + лесовоз -->
+        <div class="info-card">
+            <div class="card-title">
+                <i class="fas fa-people-arrows"></i>
+                <span>Организация работ и техническая база</span>
+            </div>
+            <div class="grid-2col" style="margin-bottom: 0.5rem;">
+                <div>
+                    <i class="fas fa-users" style="color: #c57725; margin-right: 8px;"></i> 
+                    <strong>Профессиональные наёмные бригады</strong>
+                    <p style="margin-top: 8px; font-size: 0.95rem;">Все строительные и монтажные процессы выполняются опытными бригадами, имеющими допуски и сертификаты для работ любой сложности.</p>
+                </div>
+                <div>
+                    <i class="fas fa-truck-pickup" style="color: #c57725; margin-right: 8px;"></i> 
+                    <strong>Услуги лесовоза / спецтехника</strong>
+                    <p style="margin-top: 8px; font-size: 0.95rem;">Собственный парк лесовозов и привлекаемая техника для оперативной доставки кругляка, пиломатериалов, длинномерных грузов на объекты.</p>
+                </div>
+            </div>
+            <div class="transport-highlight">
+                <span><i class="fas fa-check-double" style="color: #c57725;"></i> Логистика замкнутого цикла: доставка материалов + вывоз отходов</span>
+                <span><i class="fas fa-chart-simple"></i> Контроль сроков поставок</span>
+            </div>
+        </div>
+
+        <!-- Логистика и обеспечение строительных объектов (транспорт, материалы, лес) -->
+        <div class="info-card">
+            <div class="card-title">
+                <i class="fas fa-crane"></i>
+                <span>Обеспечение строительных объектов и транспортные услуги</span>
+            </div>
+            <p style="margin-bottom: 1.2rem;">Интеграция транспорта и снабжения напрямую связана с основным ОКВЭД <strong class="text-highlight">41.20 (строительство зданий)</strong>. Предлагаем полный спектр:</p>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-cubes"></i></div>
+                    <h4>Обеспечение материалами</h4>
+                    <p>Комплексные поставки стройматериалов, пиломатериалов, сыпучих и металлопроката на строительные площадки. Минимизация простоев.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-truck"></i></div>
+                    <h4>Доставка пиломатериалов</h4>
+                    <p>Транспортировка доски, бруса, вагонки, OSB, влагостойкой фанеры от склада до объекта с разгрузкой.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-tree"></i></div>
+                    <h4>Закупка сырья (кругляк)</h4>
+                    <p>Перевозка необработанного леса от мест заготовки или поставщиков на базу для хранения, сушки и переработки.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon"><i class="fas fa-trash-alt"></i></div>
+                    <h4>Вывоз крупногабаритного мусора</h4>
+                    <p>Экологичный вывоз строительных отходов, демонтированных конструкций, порубочных остатков и бытового мусора с объектов.</p>
+                </div>
+            </div>
+            <div class="extra-note" style="margin-top: 1.2rem;">
+                <i class="fas fa-digging"></i> <strong>Прямое преимущество:</strong> доставка лесовозом кругляка и пиломатериалов, обеспечение объектов стройматериалами — усиливает наши строительные мощности и сокращает бюджет заказчика.
+            </div>
+        </div>
+
+        <!-- Финансово-хозяйственная сводка -->
+        <div class="info-card" style="background: #fefaf5;">
+            <div class="card-title">
+                <i class="fas fa-chart-pie"></i>
+                <span>Финансово-хозяйственные показатели и профиль</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+                <div style="flex:1; min-width: 180px;">
+                    <i class="fas fa-chart-line" style="color: #b9671a;"></i> <strong>Устойчивая динамика</strong><br>
+                    С 2022 года — расширение бригад, увеличение объёмов строительства и логистики.
+                </div>
+                <div style="flex:1; min-width: 180px;">
+                <div style="flex:1; min-width: 180px;">
+                    <i class="fas fa-clipboard"></i> <strong>Полная отчётность</strong><br>
+                    Деятельность соответствует НК РФ, все разрешения и допуски СРО (при необходимости).
+                </div>
+            </div>
+            <div class="signature">
+                <i class="fas fa-signature"></i> С уважением, ИП Томилов Павел Иванович<br>
+                <span style="font-size: 0.8rem;">Генеральный подрядчик | Руководитель строительных проектов</span>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span><i class="far fa-building"></i> ИП Томилов П.И. | ОГРНИП: 322527500077565</span>
+            <span><i class="fas fa-hard-hat"></i> Строительная компания</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
